@@ -3,282 +3,720 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pavani Kakkerla's Data Engineering, Python and Software Development portfolio.">
-  <title>Pavani Kakkerla | Developer Portfolio</title>
+  <meta name="theme-color" content="#080b16">
+  <meta name="description" content="Pavani Kakkerla — AI/ML, Python development and software engineering portfolio.">
+  <title>Pavani Kakkerla | AI & Software Portfolio</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0b1020;
-      --panel: #131b30;
-      --text: #edf2ff;
-      --muted: #a7b3cc;
-      --accent: #8b9cff;
-      --border: #293451;
+      --bg: #080b16;
+      --panel: #101629;
+      --panel2: #151d33;
+      --text: #f4f6ff;
+      --muted: #a3acc4;
+      --violet: #a78bfa;
+      --cyan: #67e8f9;
+      --line: rgba(173, 187, 225, .15);
+      --radius: 22px;
     }
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse at 80% 0%, #24205255, transparent 38%),
+        radial-gradient(ellipse at 0% 40%, #123e5340, transparent 30%),
+        var(--bg);
       color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+                   BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.7;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
-    header {
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+    .container { width: min(1120px, 90%); margin: auto; }
+
+    .nav-wrap {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: #0b1020ee;
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
+      background: #080b16e8;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
     }
 
     nav {
-      max-width: 1050px;
-      margin: auto;
-      padding: 16px 24px;
+      min-height: 76px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
     }
 
-    nav strong { font-size: 1.1rem; }
+    .brand { font-weight: 850; font-size: 1.15rem; letter-spacing: -.5px; }
+    .brand span { color: var(--cyan); }
 
-    nav .links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { font-size: .9rem; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--cyan); }
 
-    main {
-      max-width: 1050px;
-      margin: auto;
-      padding: 28px 24px 70px;
+    .menu-btn {
+      display: none;
+      color: var(--text);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 1.2rem;
     }
 
     .hero {
-      min-height: 65vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      min-height: 660px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 55px;
+      padding-top: 65px;
+      padding-bottom: 75px;
     }
 
     .eyebrow {
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--cyan);
+      background: #67e8f90d;
+      border: 1px solid #67e8f929;
+      padding: 7px 13px;
+      border-radius: 100px;
+      font-size: .78rem;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      font-size: .85rem;
+      font-weight: 750;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 14px var(--cyan);
     }
 
     h1 {
-      font-size: clamp(2.6rem, 7vw, 5rem);
-      line-height: 1.1;
-      margin: 14px 0;
-      letter-spacing: -2px;
+      font-size: clamp(3.1rem, 7vw, 5.8rem);
+      letter-spacing: -4px;
+      line-height: 1.04;
+      margin: 25px 0;
     }
 
-    h2 { font-size: 2rem; margin-bottom: 12px; }
-    h3 { margin-top: 0; }
-    .muted { color: var(--muted); max-width: 720px; }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
+    .gradient {
+      background: linear-gradient(105deg, var(--violet), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .button {
-      display: inline-block;
-      padding: 10px 17px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-weight: 650;
+    .hero-copy {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.05rem;
     }
 
-    .primary {
-      background: var(--accent);
-      color: #10152b;
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 19px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: .92rem;
+      font-weight: 750;
+      transition: transform .2s, border-color .2s, background .2s;
     }
 
-    section { padding: 44px 0; }
+    .btn:hover { transform: translateY(-3px); border-color: var(--cyan); }
 
-    .grid {
+    .btn-primary {
+      color: #090d19;
+      background: linear-gradient(110deg, var(--violet), var(--cyan));
+      border: 0;
+    }
+
+    .hero-note { color: var(--muted); font-size: .84rem; margin-top: 24px; }
+
+    .visual {
+      position: relative;
+      min-height: 365px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-      margin-top: 24px;
+      place-items: center;
     }
 
-    .card {
+    .orbit {
+      width: 290px;
+      height: 290px;
+      border: 1px solid #a78bfa55;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 65px #8b5cf622, inset 0 0 50px #8b5cf611;
+      position: relative;
+    }
+
+    .orbit::before, .orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid #67e8f92b;
+      border-radius: 50%;
+    }
+
+    .orbit::before { inset: 23px; }
+    .orbit::after { inset: -20px; border-style: dashed; }
+
+    .core {
+      width: 170px;
+      height: 170px;
+      border-radius: 32px;
+      transform: rotate(-8deg);
+      background: linear-gradient(140deg, #9b87fa, #343f7e 55%, #16364c);
+      box-shadow: 0 0 65px #8b5cf644;
+      display: grid;
+      place-items: center;
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -3px;
+    }
+
+    .float-tag {
+      position: absolute;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: #11182bf2;
+      border-radius: 12px;
+      font-size: .83rem;
+      font-weight: 700;
+      box-shadow: 0 10px 40px #0005;
+    }
+
+    .tag-one { top: 28px; right: 0; color: var(--cyan); }
+    .tag-two { bottom: 45px; left: -3px; color: var(--violet); }
+    .tag-three { bottom: 0; right: 22px; color: #c4b5fd; }
+
+    section { padding: 82px 0; border-top: 1px solid var(--line); }
+
+    .section-label {
+      color: var(--cyan);
+      text-transform: uppercase;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin: 12px 0;
+    }
+
+    .section-intro { color: var(--muted); max-width: 680px; margin-bottom: 34px; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      margin-top: 30px;
+    }
+
+    .panel {
+      background: linear-gradient(145deg, #151d33cc, #0d1324cc);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .panel p { color: var(--muted); }
+    .panel h3 { margin-top: 0; }
+
+    .focus-list { display: grid; gap: 16px; }
+
+    .focus-item { display: flex; gap: 14px; align-items: flex-start; }
+    .focus-icon {
+      flex: 0 0 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #a78bfa17;
+      font-size: 1.2rem;
+    }
+
+    .focus-item strong { display: block; }
+    .focus-item span { display: block; color: var(--muted); font-size: .87rem; }
+
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+    .project {
       background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .25s, border-color .25s;
     }
 
-    .tag {
-      display: inline-block;
-      background: #222e4b;
-      border-radius: 7px;
-      padding: 4px 9px;
-      margin: 4px 4px 4px 0;
-      font-size: .86rem;
+    .project:hover { transform: translateY(-6px); border-color: #a78bfa88; }
+
+    .project-banner {
+      min-height: 155px;
+      padding: 25px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at 80% 15%, #67e8f928, transparent 40%),
+        linear-gradient(125deg, #25204a, #122b40);
     }
+
+    .project:nth-child(2) .project-banner {
+      background: radial-gradient(circle at 80% 15%, #fbbf2420, transparent 40%),
+                  linear-gradient(125deg, #352b42, #172e39);
+    }
+
+    .project:nth-child(3) .project-banner {
+      background: radial-gradient(circle at 80% 15%, #67e8f928, transparent 40%),
+                  linear-gradient(125deg, #183e49, #22204a);
+    }
+
+    .project:nth-child(4) .project-banner {
+      background: radial-gradient(circle at 80% 15%, #c4b5fd30, transparent 40%),
+                  linear-gradient(125deg, #25204a, #32213e);
+    }
+
+    .project-number { color: #ffffff88; font-size: .8rem; letter-spacing: 2px; }
+    .project-symbol { font-size: 2.5rem; }
+    .project-body { padding: 24px; }
+    .project-body h3 { margin: 0 0 10px; font-size: 1.25rem; }
+    .project-body p { color: var(--muted); font-size: .93rem; }
+    .project-links { margin-top: 20px; display: flex; gap: 18px; flex-wrap: wrap; }
+    .project-links a { color: var(--cyan); font-size: .87rem; font-weight: 750; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 35px; }
+    .chip {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #121a2d;
+      color: #dce5ff;
+      font-size: .88rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .chip:hover { border-color: var(--cyan); transform: translateY(-2px); }
+
+    .skill-group { margin-top: 30px; }
+    .skill-group h3 { font-size: 1.05rem; }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .learning-card {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 23px;
+      background: #11182a;
+    }
+
+    .learning-card .emoji { font-size: 1.6rem; }
+    .learning-card p { color: var(--muted); font-size: .9rem; margin-bottom: 0; }
+
+    .contact {
+      text-align: center;
+      padding: 50px 25px;
+      border: 1px solid #a78bfa45;
+      border-radius: 28px;
+      background: radial-gradient(ellipse at 50% 0%, #8b5cf625, transparent 65%), #101629;
+    }
+
+    .contact p { color: var(--muted); max-width: 600px; margin: 16px auto 25px; }
 
     footer {
-      text-align: center;
       color: var(--muted);
-      border-top: 1px solid var(--border);
-      padding: 25px;
+      padding: 28px 0;
+      font-size: .85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .reveal { animation: appear .8s ease both; }
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 85px; }
+      .visual { min-height: 340px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .learning-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 15px; }
     }
 
     @media (max-width: 600px) {
-      nav { align-items: flex-start; flex-direction: column; }
-      nav .links { gap: 12px; }
-      .hero { min-height: 55vh; }
+      h1 { letter-spacing: -2.5px; }
+      .menu-btn { display: block; }
+      nav { position: relative; flex-wrap: wrap; padding: 17px 0; }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 10px 0 5px;
+      }
+      .nav-links.open { display: flex; }
+      .projects { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+      .orbit { width: 240px; height: 240px; }
+      .core { width: 140px; height: 140px; font-size: 2.6rem; }
+      .tag-one { right: -5px; }
+      .tag-two { left: -5px; }
+      .footer-inner { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <strong>Pavani Kakkerla</strong>
-      <div class="links">
+  <header class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">PAVANI<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation"
+              aria-expanded="false" aria-controls="navLinks">☰</button>
+      <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#learning">Focus</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="eyebrow">Developer Portfolio</div>
-      <h1>Building with data.<br>Creating with code.</h1>
-      <p class="muted">
-        I am Pavani Kakkerla, a Computer Science graduate interested in
-        Data Engineering, Python development, and practical AI/ML projects.
-        I enjoy learning new technologies and solving real-world problems.
-      </p>
-      <div class="actions">
-        <a class="button primary" href="#projects">Explore Projects</a>
-        <a class="button" href="https://github.com/pavanikakkerla"
-           target="_blank" rel="noopener noreferrer">Visit GitHub</a>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p class="muted">
-        My interests include building data pipelines, processing datasets,
-        writing Python applications, and learning cloud technologies.
-        I am continually improving my programming and engineering skills
-        through hands-on projects.
-      </p>
-    </section>
-
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="card">
-        <h3>Programming</h3>
-        <span class="tag">Python</span>
-        <span class="tag">SQL</span>
-        <span class="tag">Java</span>
-        <h3>Data Engineering</h3>
-        <span class="tag">Azure Data Factory</span>
-        <span class="tag">Azure Data Lake</span>
-        <span class="tag">Databricks</span>
-        <span class="tag">PySpark</span>
-        <h3>Data Science & Tools</h3>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Scikit-learn</span>
-        <span class="tag">Git</span>
-        <span class="tag">GitHub</span>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <p class="muted">
-        Explore my repositories for source code, documentation, and
-        implementation details.
-      </p>
-      <div class="grid">
-        <article class="card">
-          <h3>AI Research Assistant</h3>
-          <p class="muted">
-            A web research project focused on extracting relevant content
-            and generating structured summaries using classical NLP.
+    <div class="container">
+      <section class="hero" id="home" style="border-top:0">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> Python · AI/ML · Software</div>
+          <h1>Ideas into<br><span class="gradient">intelligent</span><br>solutions.</h1>
+          <p class="hero-copy">
+            Hi, I'm Pavani Kakkerla — a Computer Science and Engineering
+            graduate exploring AI/ML, Python development, and software
+            engineering. I enjoy building useful applications and turning
+            technical ideas into practical projects.
           </p>
-          <a href="https://github.com/pavanikakkerla?tab=repositories">
-            Explore source code →
-          </a>
-        </article>
-        <article class="card">
-          <h3>Azure Data Pipeline</h3>
-          <p class="muted">
-            A data engineering practice project using Bronze, Silver,
-            and Gold processing layers.
-          </p>
-          <a href="https://github.com/pavanikakkerla?tab=repositories">
-            Explore source code →
-          </a>
-        </article>
-        <article class="card">
-          <h3>AI Notes Generator</h3>
-          <p class="muted">
-            A video lecture summarization project concept combining
-            speech-to-text and natural language processing.
-          </p>
-          <a href="https://github.com/pavanikakkerla?tab=repositories">
-            Explore source code →
-          </a>
-        </article>
-        <article class="card">
-          <h3>CKD Prediction</h3>
-          <p class="muted">
-            A machine learning project exploring Random Forest
-            classification for chronic kidney disease prediction.
-          </p>
-          <a href="https://github.com/pavanikakkerla?tab=repositories">
-            Explore source code →
-          </a>
-        </article>
-      </div>
-    </section>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
+            <a class="btn" href="https://github.com/pavanikakkerla"
+               target="_blank" rel="noopener noreferrer">GitHub profile ↗</a>
+          </div>
+          <p class="hero-note">Currently growing in AI/ML, Python and Azure Data Engineering.</p>
+        </div>
 
-    <section id="contact">
-      <h2>Let's Connect</h2>
-      <p class="muted">
-        Interested in technology, learning, and collaborative projects?
-        Visit my GitHub to explore my work.
-      </p>
-      <div class="actions">
-        <a class="button primary"
-           href="https://github.com/pavanikakkerla"
-           target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-        <!-- Add your LinkedIn URL when ready. -->
-      </div>
-    </section>
+        <div class="visual" aria-label="Abstract technology-inspired graphic">
+          <div class="orbit"><div class="core">PK</div></div>
+          <div class="float-tag tag-one">✦ Artificial Intelligence</div>
+          <div class="float-tag tag-two">⌘ Python Developer</div>
+          <div class="float-tag tag-three">◈ Data & Cloud</div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-label">01 / The person behind the code</div>
+        <h2>Curious by nature.<br><span class="gradient">Driven by building.</span></h2>
+        <p class="section-intro">
+          I bring together programming, machine learning, and data
+          technologies to explore solutions to real-world problems.
+          I believe every project is an opportunity to learn, experiment,
+          and become a better engineer.
+        </p>
+        <div class="about-grid">
+          <div class="panel">
+            <h3>A little about me</h3>
+            <p>
+              My project experience and learning journey span Python
+              applications, machine learning, text processing, web research,
+              and cloud data pipelines. I enjoy understanding how systems
+              work and improving them one step at a time.
+            </p>
+            <p>
+              My primary interests are AI/ML and Python development,
+              followed by software engineering and Azure data engineering.
+            </p>
+          </div>
+          <div class="panel">
+            <h3>What I enjoy exploring</h3>
+            <div class="focus-list">
+              <div class="focus-item">
+                <div class="focus-icon">🧠</div>
+                <div><strong>AI & Machine Learning</strong><span>Prediction, NLP and intelligent applications</span></div>
+              </div>
+              <div class="focus-item">
+                <div class="focus-icon">🐍</div>
+                <div><strong>Python Engineering</strong><span>Applications, APIs and data processing</span></div>
+              </div>
+              <div class="focus-item">
+                <div class="focus-icon">☁️</div>
+                <div><strong>Cloud Data</strong><span>Azure pipelines and data transformation</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-label">02 / Selected work</div>
+        <h2>Projects with a <span class="gradient">purpose.</span></h2>
+        <p class="section-intro">
+          A selection of projects across AI-powered research, healthcare
+          prediction, and educational tools.
+        </p>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project-banner">
+              <span class="project-number">PROJECT / 01</span>
+              <span class="project-symbol">⌕</span>
+            </div>
+            <div class="project-body">
+              <h3>Agentic AI Research Assistant</h3>
+              <p>
+                A web research application designed to extract and organize
+                useful information from search results, rank content, and
+                generate structured summaries using classical NLP methods.
+              </p>
+              <div class="chips">
+                <span class="chip">Python</span><span class="chip">FastAPI</span>
+                <span class="chip">React</span><span class="chip">NLP</span>
+                <span class="chip">Web Scraping</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/pavanikakkerla?tab=repositories"
+                   target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-banner">
+              <span class="project-number">PROJECT / 02</span>
+              <span class="project-symbol">⌁</span>
+            </div>
+            <div class="project-body">
+              <h3>Chronic Kidney Disease Prediction</h3>
+              <p>
+                A machine learning project using Random Forest classification
+                to explore chronic kidney disease prediction from
+                patient-related input features.
+              </p>
+              <div class="chips">
+                <span class="chip">Python</span><span class="chip">Pandas</span>
+                <span class="chip">Scikit-learn</span><span class="chip">ML</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/pavanikakkerla?tab=repositories"
+                   target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-banner">
+              <span class="project-number">PROJECT / 03</span>
+              <span class="project-symbol">▷</span>
+            </div>
+            <div class="project-body">
+              <h3>AI Notes Generator</h3>
+              <p>
+                An educational tool concept for converting video lecture
+                speech into text and producing concise study notes with
+                speech processing and NLP.
+              </p>
+              <div class="chips">
+                <span class="chip">Python</span><span class="chip">NLP</span>
+                <span class="chip">Streamlit</span><span class="chip">Audio Processing</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/pavanikakkerla?tab=repositories"
+                   target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-banner">
+              <span class="project-number">PROJECT / 04</span>
+              <span class="project-symbol">◫</span>
+            </div>
+            <div class="project-body">
+              <h3>Azure Data Engineering Pipeline</h3>
+              <p>
+                A hands-on data engineering workflow exploring data ingestion,
+                transformation, and Bronze, Silver, and Gold processing layers.
+              </p>
+              <div class="chips">
+                <span class="chip">Azure Data Factory</span>
+                <span class="chip">ADLS Gen2</span>
+                <span class="chip">Databricks</span>
+                <span class="chip">PySpark</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/pavanikakkerla?tab=repositories"
+                   target="_blank" rel="noopener noreferrer">Explore repositories ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-label">03 / Tools of the trade</div>
+        <h2>My <span class="gradient">toolkit.</span></h2>
+        <p class="section-intro">
+          Technologies and concepts I have used or am actively practicing.
+          The focus is on practical learning and steady improvement.
+        </p>
+
+        <div class="skill-group">
+          <h3>🧠 AI / ML & Data Science</h3>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">Scikit-learn</span>
+            <span class="chip">Pandas</span><span class="chip">NumPy</span>
+            <span class="chip">Matplotlib</span><span class="chip">NLTK</span>
+            <span class="chip">Classification</span><span class="chip">Data Preprocessing</span>
+            <span class="chip">Text Summarization</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>💻 Software Engineering & Development</h3>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">SQL</span>
+            <span class="chip">FastAPI</span><span class="chip">React</span>
+            <span class="chip">HTML</span><span class="chip">CSS</span>
+            <span class="chip">SQLite</span><span class="chip">Git</span>
+            <span class="chip">GitHub</span><span class="chip">VS Code</span>
+            <span class="chip">REST APIs</span><span class="chip">SDLC Fundamentals</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>☁️ Azure Data Engineering</h3>
+          <div class="chips">
+            <span class="chip">Microsoft Azure</span>
+            <span class="chip">Azure Data Factory</span>
+            <span class="chip">Azure Data Lake Storage Gen2</span>
+            <span class="chip">Databricks</span><span class="chip">Apache Spark</span>
+            <span class="chip">PySpark</span><span class="chip">SQL Server</span>
+            <span class="chip">Medallion Architecture</span><span class="chip">Power BI</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="learning">
+        <div class="section-label">04 / What keeps me moving</div>
+        <h2>Always in <span class="gradient">build mode.</span></h2>
+        <p class="section-intro">
+          The areas I'm prioritizing as I continue developing my engineering skills.
+        </p>
+        <div class="learning-grid">
+          <div class="learning-card">
+            <div class="emoji">🧠</div>
+            <h3>Smarter Applications</h3>
+            <p>Strengthening ML workflows, NLP techniques, data preparation, and model evaluation.</p>
+          </div>
+          <div class="learning-card">
+            <div class="emoji">⚙️</div>
+            <h3>Better Software</h3>
+            <p>Improving Python, SQL, APIs, debugging, maintainability, and problem-solving.</p>
+          </div>
+          <div class="learning-card">
+            <div class="emoji">☁️</div>
+            <h3>Data at Scale</h3>
+            <p>Practicing Azure pipelines, Databricks transformations, and data lake architecture.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="contact">
+          <div class="section-label">05 / Let's connect</div>
+          <h2>Have an idea? <span class="gradient">Let's build.</span></h2>
+          <p>
+            I'm interested in learning, collaborating on meaningful projects,
+            and exploring entry-level opportunities in AI/ML, Python development,
+            software engineering, and data engineering.
+          </p>
+          <div class="hero-actions" style="justify-content:center">
+            <a class="btn btn-primary" href="https://github.com/pavanikakkerla"
+               target="_blank" rel="noopener noreferrer">Explore my GitHub ↗</a>
+            <a class="btn" href="https://www.linkedin.com/"
+               target="_blank" rel="noopener noreferrer">Find me on LinkedIn ↗</a>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
-    © <span id="year">2026</span> Pavani Kakkerla · Built with HTML and CSS
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> Pavani Kakkerla</span>
+      <span>Designed with curiosity and code ✦</span>
+    </div>
   </footer>
+
   <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
