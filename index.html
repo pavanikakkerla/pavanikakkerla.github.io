@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pavani Kakkerla's Data Engineering, Python and Software Development portfolio.">
+  <title>Pavani Kakkerla | Developer Portfolio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --panel: #131b30;
+      --text: #edf2ff;
+      --muted: #a7b3cc;
+      --accent: #8b9cff;
+      --border: #293451;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #0b1020ee;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      max-width: 1050px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav strong { font-size: 1.1rem; }
+
+    nav .links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    main {
+      max-width: 1050px;
+      margin: auto;
+      padding: 28px 24px 70px;
+    }
+
+    .hero {
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: .85rem;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.1;
+      margin: 14px 0;
+      letter-spacing: -2px;
+    }
+
+    h2 { font-size: 2rem; margin-bottom: 12px; }
+    h3 { margin-top: 0; }
+    .muted { color: var(--muted); max-width: 720px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 17px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-weight: 650;
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #10152b;
+    }
+
+    section { padding: 44px 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #222e4b;
+      border-radius: 7px;
+      padding: 4px 9px;
+      margin: 4px 4px 4px 0;
+      font-size: .86rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding: 25px;
+    }
+
+    @media (max-width: 600px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      nav .links { gap: 12px; }
+      .hero { min-height: 55vh; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <strong>Pavani Kakkerla</strong>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Developer Portfolio</div>
+      <h1>Building with data.<br>Creating with code.</h1>
+      <p class="muted">
+        I am Pavani Kakkerla, a Computer Science graduate interested in
+        Data Engineering, Python development, and practical AI/ML projects.
+        I enjoy learning new technologies and solving real-world problems.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="#projects">Explore Projects</a>
+        <a class="button" href="https://github.com/pavanikakkerla"
+           target="_blank" rel="noopener noreferrer">Visit GitHub</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p class="muted">
+        My interests include building data pipelines, processing datasets,
+        writing Python applications, and learning cloud technologies.
+        I am continually improving my programming and engineering skills
+        through hands-on projects.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="card">
+        <h3>Programming</h3>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Java</span>
+        <h3>Data Engineering</h3>
+        <span class="tag">Azure Data Factory</span>
+        <span class="tag">Azure Data Lake</span>
+        <span class="tag">Databricks</span>
+        <span class="tag">PySpark</span>
+        <h3>Data Science & Tools</h3>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <p class="muted">
+        Explore my repositories for source code, documentation, and
+        implementation details.
+      </p>
+      <div class="grid">
+        <article class="card">
+          <h3>AI Research Assistant</h3>
+          <p class="muted">
+            A web research project focused on extracting relevant content
+            and generating structured summaries using classical NLP.
+          </p>
+          <a href="https://github.com/pavanikakkerla?tab=repositories">
+            Explore source code →
+          </a>
+        </article>
+        <article class="card">
+          <h3>Azure Data Pipeline</h3>
+          <p class="muted">
+            A data engineering practice project using Bronze, Silver,
+            and Gold processing layers.
+          </p>
+          <a href="https://github.com/pavanikakkerla?tab=repositories">
+            Explore source code →
+          </a>
+        </article>
+        <article class="card">
+          <h3>AI Notes Generator</h3>
+          <p class="muted">
+            A video lecture summarization project concept combining
+            speech-to-text and natural language processing.
+          </p>
+          <a href="https://github.com/pavanikakkerla?tab=repositories">
+            Explore source code →
+          </a>
+        </article>
+        <article class="card">
+          <h3>CKD Prediction</h3>
+          <p class="muted">
+            A machine learning project exploring Random Forest
+            classification for chronic kidney disease prediction.
+          </p>
+          <a href="https://github.com/pavanikakkerla?tab=repositories">
+            Explore source code →
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Let's Connect</h2>
+      <p class="muted">
+        Interested in technology, learning, and collaborative projects?
+        Visit my GitHub to explore my work.
+      </p>
+      <div class="actions">
+        <a class="button primary"
+           href="https://github.com/pavanikakkerla"
+           target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+        <!-- Add your LinkedIn URL when ready. -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year">2026</span> Pavani Kakkerla · Built with HTML and CSS
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
